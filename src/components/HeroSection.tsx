@@ -1,33 +1,21 @@
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import heroBanner from '@/assets/hero-banner.jpg';
-import { ArrowRight, Car } from 'lucide-react';
+import { ArrowRight, Car, Tag, ShieldCheck } from 'lucide-react';
 
 export function HeroSection() {
   return (
-    <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
-      {/* Background Image */}
-      <div className="absolute inset-0">
-        <img
-          src={heroBanner}
-          alt="Showroom de autos"
-          className="h-full w-full object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-r from-background/95 via-background/70 to-background/40" />
-      </div>
-
-      {/* Content */}
-      <div className="relative container mx-auto px-4 py-20">
-        <div className="max-w-2xl">
+    <section className="bg-card py-16 md:py-24">
+      <div className="container mx-auto px-4">
+        <div className="text-center max-w-3xl mx-auto">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-foreground mb-6 leading-tight">
-            Tu próximo vehículo te espera en{' '}
-            <span className="text-primary">AutoMax</span>
+            Encuentra tu próximo{' '}
+            <span className="text-primary">vehículo ideal</span>
           </h1>
           <p className="text-lg md:text-xl text-muted-foreground mb-8 leading-relaxed">
             Descubre nuestra colección exclusiva de camionetas y SUVs de las mejores marcas. 
             Calidad, confianza y el mejor servicio.
           </p>
-          <div className="flex flex-col sm:flex-row gap-4">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/tienda">
               <Button size="lg" className="gap-2 w-full sm:w-auto">
                 <Car className="h-5 w-5" />
@@ -40,6 +28,31 @@ export function HeroSection() {
                 Explorar Marcas
               </Button>
             </Link>
+          </div>
+        </div>
+
+        {/* Stats Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-16">
+          <div className="bg-background rounded-2xl p-6 text-center shadow-sm border border-border">
+            <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Tag className="h-7 w-7 text-primary" />
+            </div>
+            <h3 className="text-3xl font-bold text-foreground mb-2">5+</h3>
+            <p className="text-muted-foreground">Marcas Disponibles</p>
+          </div>
+          <div className="bg-background rounded-2xl p-6 text-center shadow-sm border border-border">
+            <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <Car className="h-7 w-7 text-primary" />
+            </div>
+            <h3 className="text-3xl font-bold text-foreground mb-2">25+</h3>
+            <p className="text-muted-foreground">Modelos en Stock</p>
+          </div>
+          <div className="bg-background rounded-2xl p-6 text-center shadow-sm border border-border">
+            <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
+              <ShieldCheck className="h-7 w-7 text-primary" />
+            </div>
+            <h3 className="text-3xl font-bold text-foreground mb-2">100%</h3>
+            <p className="text-muted-foreground">Garantía Incluida</p>
           </div>
         </div>
       </div>
