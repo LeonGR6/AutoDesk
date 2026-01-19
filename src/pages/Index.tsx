@@ -3,9 +3,8 @@ import { supabase } from '@/integrations/supabase/client';
 import { Navbar } from '@/components/Navbar';
 import { HeroSection } from '@/components/HeroSection';
 import { CarCard } from '@/components/CarCard';
-import { BrandCard } from '@/components/BrandCard';
 import { Brand, CarModel } from '@/types/database';
-import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { Button } from '@/components/ui/button';
 import { Skeleton } from '@/components/ui/skeleton';
 
 const Index = () => {
@@ -38,65 +37,60 @@ const Index = () => {
     <div className="min-h-screen bg-background">
       <Navbar />
       <HeroSection />
-      
-      {/* Featured Brands */}
-      <section className="container mx-auto px-4 py-16">
-        <div className="text-center mb-10">
-          <h2 className="text-3xl font-bold text-foreground mb-4">Marcas Destacadas</h2>
+
+      {/* Brand Filter Pills */}
+      <section className="container mx-auto px-4 py-12">
+        <div className="text-center mb-8">
+          <h2 className="text-3xl font-bold text-foreground mb-4">Explora por Marca</h2>
           <p className="text-muted-foreground max-w-2xl mx-auto">
-            Trabajamos con las mejores marcas del mercado para ofrecerte calidad y confiabilidad.
+            Selecciona una marca para filtrar los vehículos disponibles.
           </p>
         </div>
         
         {loading ? (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-            {[...Array(5)].map((_, i) => (
-              <Skeleton key={i} className="h-48" />
+          <div className="flex justify-center gap-3 flex-wrap">
+            {[...Array(6)].map((_, i) => (
+              <Skeleton key={i} className="h-10 w-24 rounded-xl" />
             ))}
           </div>
         ) : (
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
+          <div className="flex justify-center gap-3 flex-wrap">
+            <Button
+              variant={selectedBrand === 'all' ? 'default' : 'outline'}
+              onClick={() => setSelectedBrand('all')}
+              className="rounded-xl"
+            >
+              Todas
+            </Button>
             {brands.map((brand) => (
-              <BrandCard 
-                key={brand.id} 
-                brand={brand} 
-                modelCount={cars.filter(c => c.brand_id === brand.id).length}
-              />
+              <Button
+                key={brand.id}
+                variant={selectedBrand === brand.id ? 'default' : 'outline'}
+                onClick={() => setSelectedBrand(brand.id)}
+                className="rounded-xl"
+              >
+                {brand.name}
+              </Button>
             ))}
           </div>
         )}
       </section>
 
-      {/* Cars Catalog with Filter */}
-      <section className="container mx-auto px-4 py-16 bg-card/50">
+      {/* Cars Catalog */}
+      <section className="container mx-auto px-4 py-12 bg-card/50 rounded-3xl mb-16">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-10">
           <div>
             <h2 className="text-3xl font-bold text-foreground mb-2">Nuestro Catálogo</h2>
             <p className="text-muted-foreground">
-              Explora nuestra selección de vehículos disponibles.
+              {filteredCars.length} vehículos disponibles
             </p>
-          </div>
-          <div className="w-full md:w-64">
-            <Select value={selectedBrand} onValueChange={setSelectedBrand}>
-              <SelectTrigger>
-                <SelectValue placeholder="Filtrar por marca" />
-              </SelectTrigger>
-              <SelectContent>
-                <SelectItem value="all">Todas las marcas</SelectItem>
-                {brands.map((brand) => (
-                  <SelectItem key={brand.id} value={brand.id}>
-                    {brand.name}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </Select>
           </div>
         </div>
 
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
             {[...Array(8)].map((_, i) => (
-              <Skeleton key={i} className="h-80" />
+              <Skeleton key={i} className="h-80 rounded-2xl" />
             ))}
           </div>
         ) : (
@@ -115,10 +109,15 @@ const Index = () => {
       </section>
 
       {/* Footer */}
-      <footer className="bg-primary text-primary-foreground py-8">
+      <footer className="bg-card border-t border-border py-8">
         <div className="container mx-auto px-4 text-center">
-          <p className="font-semibold text-lg mb-2">AutoMax Dealership</p>
-          <p className="text-sm opacity-80">© 2024 Todos los derechos reservados</p>
+          <div className="flex items-center justify-center gap-2 mb-4">
+            <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
+              <span className="text-primary-foreground font-bold">A</span>
+            </div>
+            <span className="text-xl font-bold text-foreground">AutoMax</span>
+          </div>
+          <p className="text-sm text-muted-foreground">© 2024 AutoMax Dealership. Todos los derechos reservados.</p>
         </div>
       </footer>
     </div>

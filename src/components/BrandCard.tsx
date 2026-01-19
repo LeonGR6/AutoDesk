@@ -12,7 +12,7 @@ export function BrandCard({ brand, modelCount }: BrandCardProps) {
     <Link to={`/tienda?brand=${brand.id}`}>
       <Card className="group cursor-pointer transition-all duration-300 hover:shadow-lg hover:-translate-y-1 hover:border-primary/50">
         <CardContent className="p-6 text-center">
-          <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center bg-secondary/20 rounded-full">
+          <div className="w-20 h-20 mx-auto mb-4 flex items-center justify-center bg-muted/50 rounded-2xl">
             {brand.logo_url ? (
               <img
                 src={brand.logo_url}
@@ -28,7 +28,7 @@ export function BrandCard({ brand, modelCount }: BrandCardProps) {
           </h3>
           <p className="text-sm text-muted-foreground line-clamp-2">{brand.description}</p>
           {modelCount !== undefined && (
-            <p className="text-sm text-primary mt-2 font-medium">
+            <p className="text-sm text-primary mt-3 font-medium">
               {modelCount} modelos
             </p>
           )}
