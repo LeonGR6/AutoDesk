@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { Car, Home, Store, Tag, Settings, Menu, X } from 'lucide-react';
+import { Car, Home,  Tag, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { useAuth } from '@/hooks/useAuth';
 import { useState } from 'react';
@@ -11,7 +11,6 @@ export function Navbar() {
 
   const navItems = [
     { path: '/', label: 'Inicio', icon: Home },
-    { path: '/tienda', label: 'Tienda', icon: Store },
     { path: '/marcas', label: 'Marcas', icon: Tag },
     { path: '/modelos', label: 'Modelos', icon: Car },
   ];
@@ -26,7 +25,7 @@ export function Navbar() {
             <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
               <Car className="h-6 w-6 text-primary-foreground" />
             </div>
-            <span className="text-xl font-bold text-foreground">AutoMax</span>
+            <span className="text-xl font-bold text-foreground">AutoDesk</span>
           </Link>
 
           {/* Desktop Navigation */}
@@ -38,7 +37,7 @@ export function Navbar() {
                   size="sm"
                   className="gap-2"
                 >
-                  <item.icon className="h-4 w-4" />
+                  
                   {item.label}
                 </Button>
               </Link>
@@ -49,7 +48,7 @@ export function Navbar() {
                 size="sm"
                 className="gap-2 ml-2"
               >
-                <Settings className="h-4 w-4" />
+                
                 Admin
               </Button>
             </Link>
@@ -76,7 +75,7 @@ export function Navbar() {
                     variant={isActive(item.path) ? 'default' : 'ghost'}
                     className="w-full justify-start gap-2"
                   >
-                    <item.icon className="h-4 w-4" />
+                    
                     {item.label}
                   </Button>
                 </Link>
@@ -86,7 +85,7 @@ export function Navbar() {
                   variant={location.pathname.startsWith('/admin') ? 'default' : 'outline'}
                   className="w-full justify-start gap-2"
                 >
-                  <Settings className="h-4 w-4" />
+                  
                   Admin
                 </Button>
               </Link>

@@ -36,7 +36,7 @@ const Index = () => {
   return (
     <div className="min-h-screen bg-background">
       <Navbar />
-      <HeroSection />
+      <HeroSection brandsCount={brands.length} modelsCount={cars.length} />
 
       {/* Brand Filter Pills */}
       <section className="container mx-auto px-4 py-12">
@@ -115,9 +115,9 @@ const Index = () => {
             <div className="w-10 h-10 bg-primary rounded-xl flex items-center justify-center">
               <span className="text-primary-foreground font-bold">A</span>
             </div>
-            <span className="text-xl font-bold text-foreground">AutoMax</span>
+            <span className="text-xl font-bold text-foreground">AutoDesk</span>
           </div>
-          <p className="text-sm text-muted-foreground">© 2024 AutoMax Dealership. Todos los derechos reservados.</p>
+          <p className="text-sm text-muted-foreground">© 2026 AutoDesk. Todos los derechos reservados.</p>
         </div>
       </footer>
     </div>

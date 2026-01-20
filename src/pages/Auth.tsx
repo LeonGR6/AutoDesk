@@ -119,8 +119,11 @@ const Auth = () => {
               <Car className="h-8 w-8 text-primary-foreground" />
             </div>
           </div>
-          <CardTitle className="text-2xl">AutoMax Admin</CardTitle>
-          <CardDescription>Accede al panel de administración</CardDescription>
+          <CardTitle className="text-2xl">AutoDesk Admin</CardTitle>
+          <CardDescription>Accede al panel como admin con las siguientes credenciales: </CardDescription>
+          <CardDescription className="text-sm ">auto.desk.admi2026@gmail.com</CardDescription>
+          <CardDescription className="text-sm ">admin123</CardDescription>
+
         </CardHeader>
         <CardContent>
           <Tabs defaultValue="login" className="w-full">
@@ -164,6 +167,7 @@ const Auth = () => {
                 <Button type="submit" className="w-full" disabled={loading}>
                   {loading ? 'Cargando...' : 'Iniciar Sesión'}
                 </Button>
+                
               </form>
             </TabsContent>
             
@@ -225,8 +229,11 @@ const Auth = () => {
           <Button variant="link" onClick={() => navigate('/')}>
             Volver a la tienda
           </Button>
+          
         </CardFooter>
+        
       </Card>
+      
     </div>
   );
 };

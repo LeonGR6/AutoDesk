@@ -2,7 +2,12 @@ import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowRight, Car, Tag, ShieldCheck } from 'lucide-react';
 
-export function HeroSection() {
+interface HeroSectionProps {
+  brandsCount?: number;
+  modelsCount?: number;
+}
+
+export function HeroSection({ brandsCount = 0, modelsCount = 0 }: HeroSectionProps) {
   return (
     <section className="bg-card py-16 md:py-24">
       <div className="container mx-auto px-4">
@@ -37,14 +42,14 @@ export function HeroSection() {
             <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <Tag className="h-7 w-7 text-primary" />
             </div>
-            <h3 className="text-3xl font-bold text-foreground mb-2">5+</h3>
+            <h3 className="text-3xl font-bold text-foreground mb-2">{brandsCount}</h3>
             <p className="text-muted-foreground">Marcas Disponibles</p>
           </div>
           <div className="bg-background rounded-2xl p-6 text-center shadow-sm border border-border">
             <div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center mx-auto mb-4">
               <Car className="h-7 w-7 text-primary" />
             </div>
-            <h3 className="text-3xl font-bold text-foreground mb-2">25+</h3>
+            <h3 className="text-3xl font-bold text-foreground mb-2">{modelsCount}</h3>
             <p className="text-muted-foreground">Modelos en Stock</p>
           </div>
           <div className="bg-background rounded-2xl p-6 text-center shadow-sm border border-border">

@@ -48,7 +48,7 @@ export function AdminLayout() {
           <div className="p-4 border-b border-border">
             <Link to="/" className="flex items-center gap-2">
               <Car className="h-8 w-8 text-primary" />
-              <span className="text-xl font-bold text-foreground">AutoMax</span>
+              <span className="text-xl font-bold text-foreground">AutoDesk</span>
             </Link>
             <p className="text-sm text-muted-foreground mt-1">Panel de Administración</p>
           </div>
@@ -60,7 +60,7 @@ export function AdminLayout() {
                   variant={isActive(item.path) ? 'default' : 'ghost'}
                   className="w-full justify-start gap-2"
                 >
-                  <item.icon className="h-4 w-4" />
+                
                   {item.label}
                 </Button>
               </Link>
